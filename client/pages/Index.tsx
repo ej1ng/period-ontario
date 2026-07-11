@@ -129,6 +129,137 @@ export default function Index() {
           </p>
         </div>
       </section>
+
+      <section className="w-full bg-[#FFFFFF] py-20">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+          <h2 className="text-4xl font-bold mb-8">Recent Events</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div className="bg-white rounded-lg shadow p-6">
+              <p className="text-xl font-semibold">Packing Party – June 21, 2025</p>
+              <img
+                src = "PackingParty6.21.png"
+                alt = "Packing Party in June 2025"
+                className="w-full h-80 object-cover rounded-lg mt-4"
+              />
+              <p className="mt-2 text-center text-black-600">
+                Short description of the event.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg shadow p-6">
+              <p className="text-xl font-semibold">Packing Party – October 10, 2025</p>
+              <img
+                src = "PackingParty10.10.png"
+                alt = "Packing Party in October 2025"
+                className="w-full h-80 object-cover rounded-lg mt-4"
+              />
+              <p className="mt-2 text-center text-black-600">
+                Short description of the event.
+              </p>
+            </div>
+
+              <div className="bg-white rounded-lg shadow p-6">
+                <p className="text-xl font-semibold">Angus Glen Packing Party – November 29, 2025</p>
+                <img
+                  src = "PackingParty11.29.png"
+                  alt = "Packing Party in November 2025"
+                  className="w-full h-80 object-cover rounded-lg mt-4"
+                />
+                <p className="mt-2 text-center text-black-600">   
+                PERIOD. Ontario arranges packing parties consistently in a year to raise awareness and combat for menstrual poverty. 
+                This was an opportunity for everyone to come together, volunteers and the PERIOD.
+                Ontario team, to prepare period packs that were donated to local organizations.</p>
+              </div>
+            </div>
+          </div>
+      </section>
+
+      <section className="w-full bg-[#F44336] py-20">
+          <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            <div>
+              <h2 className="text-5xl font-bold uppercase mb-10">
+                Upcoming Events
+              </h2>
+
+              <div className="space-y-10">
+                <div>
+                  <h3 className="text-2xl font-semibold mb-2">Event Name</h3>
+                  <p className="text-lg text-white leading-relaxed">
+                    Brief Event details.
+                  </p>
+                </div>
+
+                <button className="mt-6 bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-900 transition">
+                  JOIN US
+                </button>
+              </div>
+            </div>
+
+            <div className="flex justify-center">
+              <img
+                src = ""
+              />
+            </div>
+          </div>
+      </section>
+
+      <section className="bg-white py-20">
+          <div className="max-w-7xl mx-auto px-8">
+
+            <h2 className="text-5xl font-bold mb-16">
+              Our Team
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+              <div className="flex flex-col">
+                <img
+                  src=""
+                />
+                <div className="bg-[#F8755B] text-center py-5">
+                  <h3 className="text-3xl font-bold uppercase">
+                    President
+                  </h3>
+
+                  <p className="text-2xl font-semibold">
+                    Mehrava Afshani
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col">
+                <img
+                  src=""
+                />
+                <div className="bg-[#F8755B] text-center py-5">
+                  <h3 className="text-3xl font-bold uppercase">
+                    Vice-President
+                  </h3>
+
+                  <p className="text-2xl font-semibold">
+                    Valerie Tso
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col">
+                <img
+                  src=""
+                />
+                <Link to ="/team">
+                  <div className="bg-[#F8755B] text-center py-5">
+                    <h3 className="text-3xl font-bold uppercase">
+                      Departments
+                    </h3>
+                  </div>
+               </Link>
+              </div>
+            </div>
+          </div>
+      </section>
+
     </main>
   );
 }

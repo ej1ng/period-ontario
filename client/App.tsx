@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Index from "./pages/Index";
+import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
 import Placeholder from "./pages/Placeholder";
 
@@ -39,7 +40,7 @@ const App = () => (
             path="/mission"
             element={<Placeholder title="OUR MISSION" />}
           />
-          <Route path="/team" element={<Placeholder title="OUR TEAM" />} />
+          <Route path="/team" element={<Team />} />
           <Route
             path="/contact"
             element={<Placeholder title="CONTACT US" />}
