@@ -1,18 +1,26 @@
 import { RequestHandler } from 'express';
-import { ContactRequest, ContactResponse } from '@shared/api';
+import { z } from 'zod';
+import { ContactResponse } from '@shared/api';
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1).max(100),
+  email: z.string().trim().email().max(200),
+  message: z.string().trim().min(1).max(5000),
+});
 
 export const handleContact: RequestHandler = async (req, res) => {
   try {
-    const { name, email, message } = req.body as ContactRequest;
+    const parsed = contactSchema.safeParse(req.body);
 
-    // Validate input
-    if (!name || !email || !message) {
+    if (!parsed.success) {
       res.status(400).json({
         success: false,
-        message: 'Missing required fields: name, email, message',
+        message: 'Please provide your name, a valid email address, and a message.',
       } as ContactResponse);
       return;
     }
+
+    const { name, email, message } = parsed.data;
 
     // TODO: Send email or store in database
     // Example: Send to email service like Sendgrid, Mailgun, etc.
