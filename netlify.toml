@@ -12,3 +12,9 @@ force = true
 from = "/api/*"
 status = 200
 to = "/.netlify/functions/api/:splat"
+
+# Serve the SPA for every other path so links like /team work on refresh
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200

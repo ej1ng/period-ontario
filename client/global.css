@@ -1,14 +1,5 @@
 /** @import must precede all other statements */
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
-
-
-@font-face {
-  font-family: 'Avenir';
-  src: url('/fonts/avenir.woff2') format('woff2'),
-       url('/fonts/avenir.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
