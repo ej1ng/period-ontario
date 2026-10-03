@@ -4,7 +4,7 @@ const departments = [
   {
     name: "Finance",
     description:
-      "As part of the finance department, we are responsible for managing and providing our organization with all the financial resources we need to operate effectively. A large part of our role involves reaching out to potential sponsors, applying for grants, and organizing donations for PERIOD Ontario. Beyond securing funds, we dedicate our resources to supporting the other departments within our organization and helping them carry out any events or initiatives that we host, such as our packing parties! Our work helps keep the organization running smoothly and ensures that every project has the financial backing it needs to succeed.",
+      "The finance department at PERIOD manages and acquires the organization's financial resources. This includes reaching out to potential sponsors, applying for grants, and organizing corporate and personal donations. Beyond securing funds, the department also assists the rest of the team in logistics and planning out events and initiatives, including annual packing parties!",
   },
   {
     name: "Advocacy",
