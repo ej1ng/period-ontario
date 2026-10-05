@@ -1,25 +1,42 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { MouseEvent, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
     { label: "HOME", to: "/" },
-    { label: "OUR MISSION", to: "/mission" },
-    { label: "OUR TEAM", to: "/team" },
-    { label: "CONTACT US", to: "/contact" },
+    { label: "OUR MISSION", to: "/#mission" },
+    { label: "EVENTS", to: "/#events" },
+    { label: "OUR TEAM", to: "/#team" },
+    { label: "CONTACT US", to: "/#contact" },
   ];
+
+  const isActive = (to: string) =>
+    to === "/"
+      ? location.pathname === "/" && !location.hash
+      : location.hash === to.slice(1);
+
+  function scrollHome(e: MouseEvent<HTMLAnchorElement>) {
+    e.preventDefault();
+    setMenuOpen(false);
+    navigate("/");
+    window.history.replaceState(null, "", "/");
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
   return (
     <nav className="w-full bg-white z-50 sticky top-0 shadow-sm">
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <Link to="/" className="h-12 md:h-16 flex items-center">
+        <Link to="/" onClick={scrollHome} className="h-12 md:h-16 flex items-center">
           <img
             src="/period-logo.png"
-            alt="Period Ontario"
+            alt="PERIOD. Ontario"
             className="h-full w-auto"
           />
         </Link>
@@ -30,17 +47,16 @@ export default function Navigation() {
             <Link
               key={link.to}
               to={link.to}
+              onClick={link.to === "/" ? scrollHome : undefined}
               className={`font-inter font-medium text-sm lg:text-base tracking-wide transition-colors hover:text-[#EF4036] ${
-                location.pathname === link.to
-                  ? "text-[#EF4036]"
-                  : "text-black"
+                isActive(link.to) ? "text-[#EF4036]" : "text-black"
               }`}
             >
               {link.label}
             </Link>
           ))}
           <Link
-            to="/donate"
+            to="/#donate"
             className="bg-black text-white font-inter font-medium text-sm px-5 py-2.5 rounded-lg hover:bg-[#EF4036] transition-colors whitespace-nowrap"
           >
             DONATE
@@ -73,16 +89,16 @@ export default function Navigation() {
             <Link
               key={link.to}
               to={link.to}
+              onClick={link.to === "/" ? scrollHome : () => setMenuOpen(false)}
               className={`font-inter font-medium text-base tracking-wide py-1 transition-colors hover:text-[#EF4036] ${
-                location.pathname === link.to ? "text-[#EF4036]" : "text-black"
+                isActive(link.to) ? "text-[#EF4036]" : "text-black"
               }`}
-              onClick={() => setMenuOpen(false)}
             >
               {link.label}
             </Link>
           ))}
           <Link
-            to="/donate"
+            to="/#donate"
             className="bg-black text-white font-inter font-medium text-sm px-5 py-3 rounded-lg text-center hover:bg-[#EF4036] transition-colors mt-2"
             onClick={() => setMenuOpen(false)}
           >

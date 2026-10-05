@@ -18,5 +18,5 @@ app.get(/^(?!\/api\/).*/, (_req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`PERIOD Ontario server running on port ${port}`);
+  console.log(`PERIOD. Ontario server running on port ${port}`);
 });

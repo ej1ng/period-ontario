@@ -1,3 +1,3 @@
-# Period Ontario
+# PERIOD. Ontario
 
-Official website for the Period Ontario chapter. Work in progress.
+Official website for the PERIOD. Ontario chapter. Work in progress.

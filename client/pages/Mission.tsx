@@ -53,7 +53,7 @@ export default function Mission() {
           className="text-black leading-relaxed"
           style={{ fontSize: "clamp(1.15rem, 2.4vw, 1.6rem)" }}
         >
-          PERIOD Ontario works to end period poverty and stigma through
+          PERIOD. Ontario works to end period poverty and stigma through
           service, education, and advocacy, so that everyone has access to the
           period products and knowledge they need.
         </p>

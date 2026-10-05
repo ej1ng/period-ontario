@@ -8,28 +8,36 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Index from "./pages/Index";
-import Team from "./pages/Team";
-import Mission from "./pages/Mission";
-import Contact from "./pages/Contact";
-import Donate from "./pages/Donate";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-// Start each new page at the top instead of keeping the previous scroll position
-function ScrollToTop() {
-  const { pathname } = useLocation();
+// Support both top-of-page navigation and in-page hash links from the navbar.
+function ScrollToHash() {
+  const { pathname, hash } = useLocation();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      document
+        .getElementById(hash.replace("#", ""))
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [pathname, hash]);
+
   return null;
 }
 
 const footerLinks = [
-  { label: "Our Mission", to: "/mission" },
-  { label: "Our Team", to: "/team" },
-  { label: "Contact Us", to: "/contact" },
-  { label: "Donate", to: "/donate" },
+  { label: "Our Mission", to: "/#mission" },
+  { label: "Events", to: "/#events" },
+  { label: "Our Team", to: "/#team" },
+  { label: "Contact Us", to: "/#contact" },
+  { label: "Donate", to: "/#donate" },
 ];
 
 function Layout({ children }: { children: React.ReactNode }) {
@@ -50,7 +58,7 @@ function Layout({ children }: { children: React.ReactNode }) {
               </Link>
             ))}
           </nav>
-          <p>© {new Date().getFullYear()} PERIOD Ontario. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} PERIOD. Ontario. All rights reserved.</p>
         </div>
       </footer>
     </div>
@@ -62,14 +70,14 @@ const App = () => (
     <Toaster />
     <Sonner />
     <BrowserRouter>
-      <ScrollToTop />
+      <ScrollToHash />
       <Layout>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/mission" element={<Mission />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/donate" element={<Donate />} />
+          <Route path="/mission" element={<Index />} />
+          <Route path="/team" element={<Index />} />
+          <Route path="/contact" element={<Index />} />
+          <Route path="/donate" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
