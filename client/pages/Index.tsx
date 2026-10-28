@@ -1,7 +1,13 @@
 import { FormEvent, useState } from "react";
 import { ContactRequest, ContactResponse } from "@shared/api";
+import TeamCarousel from "../components/TeamCarousel";
 import TeamMemberCard from "../components/TeamMemberCard";
-import { departmentHeads, leadership } from "../data/team";
+import {
+  boardOfDirectors,
+  departmentHeads,
+  leadership,
+  officers,
+} from "../data/team";
 
 const recentEvents = [
   {
@@ -514,26 +520,42 @@ export default function Index() {
           </h2>
 
           <div className="space-y-10">
+            <div className="flex flex-wrap justify-center gap-x-16 gap-y-10">
+              {[
+                { label: "Board of Directors", members: boardOfDirectors },
+                { label: "Leadership", members: leadership },
+              ].map((group) => (
+                <div key={group.label}>
+                  <h3 className="font-inter text-sm uppercase tracking-[0.25em] text-black/50 mb-4 text-center">
+                    {group.label}
+                  </h3>
+                  <div className="flex flex-wrap justify-center gap-6">
+                    {group.members.map((member) => (
+                      <div key={member.name} className="w-44">
+                        <TeamMemberCard member={member} size="md" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
             <div>
-              <h3 className="font-inter text-sm uppercase tracking-[0.25em] text-black/50 mb-4">
-                Leadership
+              <h3 className="font-inter text-sm uppercase tracking-[0.25em] text-black/50 mb-4 text-center">
+                Department Heads
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-10">
-                {leadership.map((member) => (
-                  <TeamMemberCard key={member.role} member={member} />
+              <div className="max-w-[1016px] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-8">
+                {departmentHeads.map((member) => (
+                  <TeamMemberCard key={member.role} member={member} size="md" />
                 ))}
               </div>
             </div>
 
             <div>
-              <h3 className="font-inter text-sm uppercase tracking-[0.25em] text-black/50 mb-4">
-                Department Heads
+              <h3 className="font-inter text-sm uppercase tracking-[0.25em] text-black/50 mb-4 text-center">
+                Officers
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-                {departmentHeads.map((member) => (
-                  <TeamMemberCard key={member.role} member={member} />
-                ))}
-              </div>
+              <TeamCarousel members={officers.flatMap((group) => group.members)} />
             </div>
 
             <a
