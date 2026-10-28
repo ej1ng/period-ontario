@@ -532,7 +532,7 @@ export default function Index() {
                   <div className="flex flex-wrap justify-center gap-6">
                     {group.members.map((member) => (
                       <div key={member.name} className="w-44">
-                        <TeamMemberCard member={member} size="md" />
+                        <TeamMemberCard member={member} size="md-lg" />
                       </div>
                     ))}
                   </div>

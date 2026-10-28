@@ -9,7 +9,7 @@ function getInitials(name: string) {
     .toUpperCase();
 }
 
-type CardSize = "lg" | "md" | "sm";
+type CardSize = "lg" | "md-lg" | "md" | "sm";
 
 const sizeStyles: Record<
   CardSize,
@@ -22,6 +22,14 @@ const sizeStyles: Record<
     name: "text-lg md:text-xl mt-4",
     role: "text-sm mt-1",
   },
+  // md text with a larger avatar, so it fits the same card width as md.
+  "md-lg": {
+    card: "p-4",
+    avatar: "w-24 h-24 md:w-28 md:h-28",
+    initials: "text-2xl md:text-3xl",
+    name: "text-base md:text-lg mt-4",
+    role: "text-sm mt-1",
+  },
   md: {
     card: "p-4",
     avatar: "w-20 h-20 md:w-24 md:h-24",
@@ -31,7 +39,7 @@ const sizeStyles: Record<
   },
   sm: {
     card: "p-3",
-    avatar: "w-14 h-14 md:w-16 md:h-16",
+    avatar: "w-[4.5rem] h-[4.5rem] md:w-20 md:h-20",
     initials: "text-lg md:text-xl",
     name: "text-sm md:text-base mt-3",
     role: "text-xs md:text-sm mt-1",
