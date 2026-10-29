@@ -36,7 +36,7 @@ const recentEvents = [
   },
 ];
 
-const googleCalendarEmbedUrl = "";
+const googleCalendarEmbedUrl = "https://calendar.google.com/calendar/embed?src=f0366f7864ecec16fbc0cd1c41df7d82320675416c8627ea75991501db424af9%40group.calendar.google.com&ctz=America%2FToronto";
 
 const pillars = [
   {
